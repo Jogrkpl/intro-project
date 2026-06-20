@@ -77,17 +77,6 @@ static AudioData read_wav_as_mono(const std::string& wav_path) {
     //create dr_wav object 
     drwav wav{};
 
-    /*
-        Η drwav_init_file():
-        - ανοίγει το αρχείο
-        - διαβάζει το WAV header
-        - βρίσκει channels, sample rate και frame count
-        - προετοιμάζει τον decoder
-
-        Αν επιστρέψει false, το αρχείο δεν ανοίγει ή δεν
-        αναγνωρίζεται ως υποστηριζόμενο WAV/AIFF/RF64 κ.λπ.
-    */
-
     //open .wav file
     if (!drwav_init_file(&wav, wav_path.c_str(), nullptr)) {
         throw std::runtime_error(
